@@ -2,8 +2,12 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+
+// allow cross-origin requests
+app.use(cors());
 
 mongoose.connect(
   'mongodb+srv://alex:test1234@ninja-slb1e.mongodb.net/ninja?retryWrites=true&w=majority',
