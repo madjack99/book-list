@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 
 mongoose.connect(
-  'mongodb+srv://alex:test1234@ninja-slb1e.mongodb.net/ninja?retryWrites=true&w=majority',
+  // put your db string here
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
