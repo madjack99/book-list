@@ -23,7 +23,16 @@ const AddBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBook();
+
+    const { name, genre, authorId } = state;
+
+    addBook({
+      variables: {
+        name,
+        genre,
+        authorId,
+      },
+    });
   };
 
   const displayAuthors = () => {
