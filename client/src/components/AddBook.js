@@ -4,6 +4,22 @@ import { getAuthorsQuery } from '../queries/queries';
 
 const AddBook = () => {
   const { loading, data } = useQuery(getAuthorsQuery);
+  const [state, setState] = React.useState({
+    name: '',
+    genre: '',
+    authorId: '',
+  });
+
+  const handleChange = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   const displayAuthors = () => {
     if (loading) {
@@ -20,18 +36,18 @@ const AddBook = () => {
   };
 
   return (
-    <form id='add-book'>
+    <form id='add-book' onSubmit={handleSubmit}>
       <div className='field'>
         <label>Book name:</label>
-        <input type='text' />
+        <input type='text' name='name' onChange={handleChange} />
       </div>
       <div className='field'>
         <label>Genre:</label>
-        <input type='text' />
+        <input type='text' name='genre' onChange={handleChange} />
       </div>
       <div className='field'>
         <label>Author:</label>
-        <select name='' id=''>
+        <select name='authorId' onChange={handleChange}>
           <option>Select author</option>
           {displayAuthors()}
         </select>
